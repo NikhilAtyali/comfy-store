@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 const Footer = () => {
   return (
-    <Wrapper><h5>Created by Nikhil Atyali</h5></Wrapper>
+    <Wrapper><h5>Created by <span>Nikhil Atyali</span></h5></Wrapper>
   )
 }
 

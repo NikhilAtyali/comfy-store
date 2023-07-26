@@ -5,7 +5,17 @@ import heroBcg from '../assets/hero-bcg.jpeg'
 import heroBcg2 from '../assets/hero-bcg-2.jpeg'
 
 const Hero = () => {
-  return <h4>hero</h4>
+  return <Wrapper className='section-center'>
+    <article className='content'>
+      <h1>Design Your <br/>Comfort Zone</h1>
+      <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+      <Link to="/products" className='btn hero-btn '>Shop Now</Link>
+    </article>
+    <article className='img-container'>
+      <img src={heroBcg} alt="heroBcg" className='main-img' />
+      <img src={heroBcg2} alt="heroBcg2" className='accent-img'/>
+    </article>
+  </Wrapper>
 }
 
 const Wrapper = styled.section`

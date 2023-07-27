@@ -15,7 +15,7 @@ const Product = ({name, image, id, price}) => {
         {name}
       </h5>
       <p>
-        ${price}
+        {formatPrice(price)}
       </p>
     </footer>
   </Wrapper>

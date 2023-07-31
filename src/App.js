@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/cart" element={<CartPage />} />
         <Route exact path="/checkout" element={<CheckoutPage />} />
         <Route exact path="/products" element={<ProductPage />} />
-        <Route exact path="/products:id" element={<SingleProductPage />} />
+        <Route exact path="/products/:id" element={<SingleProductPage />} />
         <Route exact path="/*" element={<ErrorPage />} />
       </Routes>
       <Footer />

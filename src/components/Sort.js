@@ -11,7 +11,6 @@ const Sort = () => {
     sort, 
     updateSort
   } = useFilterContext();
-  console.log({ grid_View });
   return (
     <Wrapper>
       <div className="btn-container">

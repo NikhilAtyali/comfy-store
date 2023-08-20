@@ -2,8 +2,26 @@ import React from 'react'
 import styled from 'styled-components'
 import { formatPrice } from '../utils/helpers'
 import { Link } from 'react-router-dom'
-const ListView = () => {
-  return <h4>list view</h4>
+const ListView = ({ products }) => {
+  return (
+  <Wrapper>
+    {
+      products.map((product) => {
+        const { id, name, price, description, image } = product;
+        return (<article id={id}>
+          <img src={image} alt={name} />
+          <div>
+          <h4>{name}</h4>
+          <h5 className='price'>{formatPrice(price)}</h5>
+          <p>{description}</p>
+          <Link to={`/products/${id}`} className='btn' >Details</Link>
+          </div>
+        </article>
+        )
+      })
+    }
+  </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`

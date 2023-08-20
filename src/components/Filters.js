@@ -1,31 +1,49 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useFilterContext } from '../context/filter_context'
-import { getUniqueValues, formatPrice } from '../utils/helpers'
-import { FaCheck } from 'react-icons/fa'
+import React from "react";
+import styled from "styled-components";
+import { useFilterContext } from "../context/filter_context";
+import { getUniqueValues, formatPrice } from "../utils/helpers";
+import { FaCheck } from "react-icons/fa";
 
 const Filters = () => {
   const {
-    filters:{
-    text, company, category, color, min_price, max_price, price, shipping
-  }, updateFilters, clearFilters,allProducts} = useFilterContext()
-  return <Wrapper>
-    <div className='content'>
-      <form onSubmit={(e)=>e.preventDefault()}>
-{/* search inpot */}
-      <div className='form-control'>
-        <input 
-        type="text"
-        name='text'
-        placeholder='Search here...'
-        value={text}
-        onChange={updateFilters}
-        />
+    filters: {
+      text,
+      company,
+      category,
+      color,
+      min_price,
+      max_price,
+      price,
+      shipping,
+    },
+    updateFilters,
+    clearFilters,
+    all_Products,
+  } = useFilterContext();
+console.log(all_Products, 'allProducts');
+  const categories = getUniqueValues(all_Products, 'category');
+  const companies = getUniqueValues(all_Products, 'company');
+  const colors = getUniqueValues(all_Products, 'colors')
+  console.log(colors);
+  return (
+    <Wrapper>
+      <div className="content">
+        <form onSubmit={(e) => e.preventDefault()}>
+          {/* search inpot */}
+          <div className="form-control">
+            <input
+              type="text"
+              name="text"
+              placeholder="Search here..."
+              value={text}
+              onChange={updateFilters}
+            />
+          </div>
+        </form>
       </div>
-      </form>
-    </div>
-  </Wrapper>
-}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   .form-control {
@@ -125,6 +143,6 @@ const Wrapper = styled.section`
       top: 1rem;
     }
   }
-`
+`;
 
-export default Filters
+export default Filters;

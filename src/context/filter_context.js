@@ -14,7 +14,7 @@ import { useProductsContext } from "./products_context";
 
 const initialState = {
   filtered_Products: [],
-  allProducts: [],
+  all_Products: [],
   grid_View: true,
   sort: "price-lowest",
   filters: {

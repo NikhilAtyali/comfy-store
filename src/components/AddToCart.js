@@ -1,35 +1,36 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { FaCheck } from 'react-icons/fa'
-import { useCartContext } from '../context/cart_context'
-import AmountButtons from './AmountButtons'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { FaCheck } from "react-icons/fa";
+import { useCartContext } from "../context/cart_context";
+import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ product }) => {
-  const { colors, stock } = product
-  const [mainColor, setMainColor] = useState(colors[0])
+  const { AddToCart } = useCartContext();
+  const { id, colors, stock } = product;
+  const [mainColor, setMainColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
   const increase = () => {
-    setAmount((oldAmount)=>{
+    setAmount((oldAmount) => {
       let tempAmount = oldAmount + 1;
       if (tempAmount > stock) {
         tempAmount = stock;
       }
-      return tempAmount
-    })
-  }
+      return tempAmount;
+    });
+  };
   const decrease = () => {
-    setAmount((oldAmount)=>{
+    setAmount((oldAmount) => {
       let tempAmount = oldAmount - 1;
       if (tempAmount < 1) {
         tempAmount = 1;
       }
-      return tempAmount
-    })
-  }
+      return tempAmount;
+    });
+  };
   return (
     <Wrapper>
-      <div className='colors'>
+      <div className="colors">
         <span>Colors: </span>
         <div>
           {colors.map((color, index) => {
@@ -37,22 +38,30 @@ const AddToCart = ({ product }) => {
               <button
                 key={index}
                 style={{ backgroundColor: color }}
-                className={`${color === mainColor ? 'color-btn  active' : 'color-btn'}`}
+                className={`${
+                  color === mainColor ? "color-btn  active" : "color-btn"
+                }`}
                 onClick={() => setMainColor(colors[index])}
               >
                 {color === mainColor ? <FaCheck /> : null}
               </button>
-            )
+            );
           })}
         </div>
       </div>
-      <div className='btn-container '>
-        <AmountButtons amount={amount} increase={increase} decrease={decrease} />
-        <Link to="/cart" className='btn'>Add to Cart</Link>
+      <div className="btn-container ">
+        <AmountButtons
+          amount={amount}
+          increase={increase}
+          decrease={decrease}
+        />
+        <Link to="/cart" className="btn" onClick={() => AddToCart(id, mainColor, amount, product)}>
+          Add to Cart
+        </Link>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   margin-top: 2rem;
@@ -98,5 +107,5 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     width: 140px;
   }
-`
-export default AddToCart
+`;
+export default AddToCart;

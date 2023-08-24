@@ -14,7 +14,7 @@ import { useProductsContext } from "./products_context";
 
 const initialState = {
   filtered_Products: [],
-  allProducts: [],
+  all_Products: [],
   grid_View: true,
   sort: "price-lowest",
   filters: {
@@ -54,12 +54,26 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: value });
   };
   const updateFilters = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    let name = e.target.name;
+    let value = e.target.value;
+    if(name === 'category'){
+      value = e.target.textContent
+    }
+    if ( name === 'color'){
+      value = e.target.dataset.color
+    }
+    if(name === 'price'){
+      value = Number(value)
+    }
+    if(name === 'shipping'){
+      value = e.target.checked
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
-  const clearFilters = () => {};
+  const clearFilters = () => {
+    dispatch({type: CLEAR_FILTERS})
+  };
   const setListView = () => {
     dispatch({ type: SET_LISTVIEW });
   };

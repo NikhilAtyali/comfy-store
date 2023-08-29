@@ -8,6 +8,7 @@ import {
 
 const cart_reducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
+    console.log("added to cart");
     const { id, color, amount, product } = action.payload;
     const tempItem = state.cart.find((i) => i === id + color);
     if (tempItem) {
@@ -22,12 +23,12 @@ const cart_reducer = (state, action) => {
     } else {
       const newItem = {
         id: id + color,
-        name: product.name,
+        name: product?.name,
         amount,
         color,
-        price: product.price,
-        image: product.images[0].url,
-        max: product.stock,
+        price: product?.price,
+        image: product?.images[0]?.url,
+        max: product?.stock,
       };
       return { ...state, cart: { ...state.cart, newItem } };
     }

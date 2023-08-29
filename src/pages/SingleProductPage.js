@@ -35,6 +35,7 @@ const SingleProductPage = () => {
   if(error){
     return <Error />
   }
+  
   console.log({product});
   const {name, price, company, description, stock, stars, reviews, id:productId, images} = product
   return <Wrapper>

@@ -1,8 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useCartContext } from '../context/cart_context'
+import CartItem from './CartItem'
 
 const CartColumns = () => {
-  return <h4>cart columns</h4>
+  const {cart, clearCart} = useCartContext()
+  return (<Wrapper >
+    <div className='content'>
+    <h5>Item</h5>
+    <h5>Price</h5>
+    <h5>Quantity</h5>
+    <h5>SubTotal</h5>
+    <span></span>
+    </div>
+   <hr/>
+  </Wrapper>)
 }
 
 const Wrapper = styled.div`
